@@ -15,7 +15,7 @@ jobs:
       - restore_cache:
           
           keys: 
-            - v1-npm-deps-{{ checksum "package.json" }}
+            - dependency-cache-{{ checksum "package.json" }}
 
           
       # - run:
