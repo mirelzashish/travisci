@@ -15,7 +15,7 @@ jobs:
       - restore_cache:
           
           keys: 
-            - v2-dependencies-{{ checksum "package.json" }}
+            - v3-dependencies-{{ checksum "package.json" }}
 
           
       # - run:
