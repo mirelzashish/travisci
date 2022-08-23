@@ -8,12 +8,12 @@ jobs:
       - checkout
       - run:
           name: Update NPM
-          command: ls my-ap/
+          command: ls my-app/
       - restore_cache:
           key: dependency-cache-{{ checksum "my-app/package.json" }}
-      - run:
-          name: Install Dependencies
-          command: cd my-app && npm install
+      # - run:
+      #     name: Install Dependencies
+      #     command: cd my-app && npm install
       - save_cache:
           key: dependency-cache-{{ checksum "my-app/package.json" }}
           paths:
