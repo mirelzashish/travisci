@@ -12,17 +12,17 @@ jobs:
     steps:
       - checkout
  
-      - run:
+      -run:
           name: lsist
           command: ls my-app/
 
-      - run:
+      -run:
          name: pwd
          command: pwd
-       - run:
+       -run:
          name: install dependencies
          command: cd my-app && npm install
-       - run:
+       -run:
          name: run test
          command: cd my-app && npm run test
 
