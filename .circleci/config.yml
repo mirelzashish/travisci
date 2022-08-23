@@ -1,4 +1,3 @@
-
 version: 2.1
 # jobs is the task which are working for
 
@@ -6,25 +5,25 @@ jobs:
   test:
     docker:
       - image: cimg/node:18.7.0
-    # for working_directory give your app name 
+    # for working_directory give your app name
     working_directory: ~/my-app/
 
     steps:
       - checkout
- 
-      -run:
+
+      - run:
           name: lsist
           command: ls my-app/
 
-      -run:
-         name: pwd
-         command: pwd
-       -run:
-         name: install dependencies
-         command: cd my-app && npm install
-       -run:
-         name: run test
-         command: cd my-app && npm run test
+      - run:
+          name: pwd
+          command: pwd
+      - run:
+          name: install dependencies
+          command: cd my-app && npm install
+      - run:
+          name: run test
+          command: cd my-app && npm run test
 
 workflows:
   test-depoly:
