@@ -18,9 +18,19 @@ jobs:
       - run:
           name: pwd
           command: pwd
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "my-app/package.json"}}
+
       - run:
           name: install dependencies
           command: cd my-app && npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+            - package.json
+          key: v1-dependencies-{{checksum "my-app/package.json"}}
       - run:
           name: run test
           command: cd my-app && npm run test
