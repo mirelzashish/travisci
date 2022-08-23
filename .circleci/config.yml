@@ -16,11 +16,8 @@ jobs:
           
           keys: 
             - v1-dependencies-{{ checksum "package-lock.json" }}
-
-          
-      - run:
-          name: Install Dependencies
-          command: npm install
+            - v1-dependencies-          
+      - run: npm install
       - save_cache:
           paths:
             - ./node_modules
