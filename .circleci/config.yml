@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/node:18.7.0
+      - image: circleci/node:14.18.1
     # for working_directory give your app name
     working_directory: ~/my-app/
 
@@ -20,7 +20,7 @@ jobs:
           command: pwd
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "my-app/package.json"}}
+            - v2-dependencies-{{ checksum "my-app/package.json"}}
 
       - run:
           name: install dependencies
@@ -29,8 +29,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - package.json
-          key: v1-dependencies-{{checksum "my-app/package.json"}}
+          key: v2-dependencies-{{checksum "my-app/package.json"}}
       - run:
           name: run test
           command: cd my-app && npm run test
