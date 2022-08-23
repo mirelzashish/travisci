@@ -2,17 +2,17 @@ version: 2.1
 
 jobs:
   build:
-    working_directory: ~/my-app
     docker:
       - image: cimg/node:14.18.1
+    working_directory: ~/my-app
+
     steps:
       - checkout
       - run:
           name: Update NPM
           command: ls my-app/
       - restore_cache:
-          paths:
-            - ./node_modules/cache
+          
           key: dependency-cache-{{ checksum "my-app/package.json" }}
           
       # - run:
@@ -21,7 +21,7 @@ jobs:
       - save_cache:
           key: dependency-cache-{{ checksum "my-app/package.json" }}
           paths:
-            - ./node_modules
+            - ./node_modules/cache
 workflows:
   version: 2
   build-deploy:
