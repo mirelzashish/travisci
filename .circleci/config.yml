@@ -15,7 +15,7 @@ jobs:
       - restore_cache:
           
           keys: 
-            - dependency-cache-{{ checksum "my-app/package.json" }}
+            - v2-dependencies-{{ checksum "package.json" }}
 
           
       # - run:
