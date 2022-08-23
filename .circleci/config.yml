@@ -10,7 +10,7 @@ jobs:
           name: Update NPM
           command: ls my-app/
       - restore_cache:
-          key: dependency-cache-{{ checksum "ls my-app/package.json" }}
+          key: dependency-cache-{{ checksum ls "my-app/package.json" }}
       # - run:
       #     name: Install Dependencies
       #     command: cd my-app && npm install
