@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Update NPM
-          command: ls
+          command: ls my-ap/
       - restore_cache:
           key: dependency-cache-{{ checksum "my-app/package.json" }}
       - run:
