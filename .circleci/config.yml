@@ -11,14 +11,17 @@ jobs:
           name: Update NPM
           command: ls my-app/
       - restore_cache:
+          paths:
+            - ./node_modules
           key: dependency-cache-{{ checksum "my-app/package.json" }}
+          
       # - run:
       #     name: Install Dependencies
       #     command: cd my-app && npm install
       - save_cache:
           key: dependency-cache-{{ checksum "my-app/package.json" }}
           paths:
-            - ls my-ap && ./node_modules
+            - ./node_modules
 workflows:
   version: 2
   build-deploy:
