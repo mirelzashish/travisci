@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 jobs:
   build:
@@ -7,23 +7,24 @@ jobs:
     working_directory: ~/my-app
 
     steps:
-      - checkout
+      - checkout:
+          path: ~/my-app
       - run:
           name: Update NPM
-          command: ls my-app/
-      - restore_cache:
+          command: ls 
+      # - restore_cache:
           
-          keys: 
-            - v1-npm-deps-{{ checksum "my-app/package.json" }}
+      #     keys: 
+      #       - v1-npm-deps-{{ checksum "my-app/package.json" }}
 
           
       # - run:
       #     name: Install Dependencies
       #     command: cd my-app && npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "my-app/package.json" }}
-          paths:
-            - ./node_modules
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "my-app/package.json" }}
+      #     paths:
+      #       - ./node_modules
 workflows:
   version: 2
   build-deploy:
