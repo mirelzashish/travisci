@@ -12,7 +12,7 @@ jobs:
           command: ls my-app/
       - restore_cache:
           paths:
-            - ./node_modules
+            - ./node_modules/cache
           key: dependency-cache-{{ checksum "my-app/package.json" }}
           
       # - run:
