@@ -1,29 +1,33 @@
-version: 2
+
+version: 2.1
+# jobs is the task which are working for
 
 jobs:
-  build_and_test:
+  test:
     docker:
-      - image: circleci/node:14.18.1
-
-    working_directory: ~/my-app
+      - image: cimg/node:18.7.0
+    # for working_directory give your app name 
+    working_directory: ~/my-app/
 
     steps:
       - checkout
+ 
       - run:
           name: lsist
           command: ls my-app/
 
-  # - restore_cache:
-  #   key: v1-deps-{{checksum "my-app/package.json"}}
+      - run:
+         name: pwd
+         command: pwd
+       - run:
+         name: install dependencies
+         command: cd my-app && npm install
+       - run:
+         name: run test
+         command: cd my-app && npm run test
 
-  # - run:
-  #   name: install dependencies
-  #   command: npm install
-
-  # - save_cache:
-  #   key: v1-deps-{{ checksum "my-app/package.json"}}
-  #   path:
-  #     - node_modules
-
-  # - run: cd my-app && npm run test
-  # - run: cd my-app && npm run build
+workflows:
+  test-depoly:
+    jobs:
+      - test
+      # - two
