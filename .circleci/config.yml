@@ -20,7 +20,7 @@ jobs:
           command: pwd
       - restore_cache:
           keys:
-            - v1-deps-{{ checksum "package-lock.json" }}
+            - v1-deps-{{ checksum "my-app//package-lock.json" }}
 
       # - run:
       #     name: install dependencies
