@@ -3,19 +3,19 @@ jobs:
   build:
     working_directory: ~/my-app
     docker:
-      - image: cimg/node:14.18.1
+      - image: circleci/node:14.18.1
     steps:
       - checkout
       - run:
           name: Update NPM
           command: "sudo npm install -g npm"
       - restore_cache:
-          key: dependency-cache-{{ checksum "my-app/package-lock.json" }}
+          key: dependency-cache-{{ checksum "my-app/package.json" }}
       - run:
           name: Install Dependencies
           command: cd my-app && npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "my-app/package-lock.json" }}
+          key: dependency-cache-{{ checksum "my-app/package.json" }}
           paths:
             - ./node_modules
 workflows:
