@@ -11,7 +11,10 @@ jobs:
           path: ~/my-app
       - run:
           name: Update NPM
-          command: ls 
+          command: |
+            ls 
+            echo "hello"
+            pwd
       - restore_cache:
           
           keys: 
